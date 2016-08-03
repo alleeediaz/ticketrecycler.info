@@ -25,8 +25,11 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes(); # Adds deleted_at column for soft deletes.
 
-            // $table->foreign('user_id')->references('id')->on('users');
+            $table->index(['name','lastname1','lastname2']);
+            $table->index(['state','city']);
+            $table->index('email');
         });
     }
 

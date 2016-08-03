@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStatesTable extends Migration
+class CreateCitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,26 +13,25 @@ class CreateStatesTable extends Migration
     public function up()
     {
         /**
-         * Debemos considerar para el catalogo de Estados
+         * Debemos considerar para el catalogo de Municipios
          * id
          * cve
          * name
          * latlong
-         * abbreviation1
-         * abbreviation2
+         * state_id
          */
-        Schema::create('states', function (Blueprint $table) {
+        Schema::create('cities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('code',5);
             $table->string('name');
             $table->string('latlong',100)->nullable();
-            $table->string('abbreviation1',5)->nullable();
-            $table->string('abbreviation2',5)->nullable();
+            $table->integer('states_id');
             $table->timestamps(); # Adds created_at and updated_at columns.
             $table->softDeletes(); # Adds deleted_at column for soft deletes.
 
             $table->index('name');
             $table->index('code');
+            $table->index('states_id');
         });
     }
 
@@ -43,6 +42,6 @@ class CreateStatesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('states');
+        Schema::drop('cities');
     }
 }

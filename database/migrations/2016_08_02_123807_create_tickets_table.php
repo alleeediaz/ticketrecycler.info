@@ -12,7 +12,6 @@ class CreateTicketsTable extends Migration
      */
     public function up()
     {
-        //$table->enum('tipo', ['Alimentos', 'Gasolina']);
         /**
          * Debemos considerar para un ticket
          * Tipo de Ticket -> Alimentos -> Gasolina -> Hospedaje -> Transporte
@@ -30,18 +29,28 @@ class CreateTicketsTable extends Migration
          *
          * Adjuntar Foto
          */
-        $table->increments('id');
-        $table->string('name',50);
-        $table->string('lastname1',50);
-        $table->string('lastname2',50);
-        $table->string('cellphone',15)->nullable();
-        $table->integer('state')->unsigned()->nullable();
-        $table->integer('city')->unsigned()->nullable();
-        $table->string('zipcode',5)->nullable();
-        $table->string('email')->unique();
-        $table->string('password');
-        $table->rememberToken();
-        $table->timestamps();
+        Schema::create('tickets', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->enum('type', ['Alimentos', 'Gasolina','SAMS','WALMART','LACOMER','SORIANA']);
+            $table->string('number',50);
+            $table->date('date');
+            $table->integer('state')->unsigned(); # FK
+            $table->integer('city')->unsigned(); # FK
+            $table->decimal('amount',15,2);
+            $table->string('site',50)->nullable();
+            $table->string('code1',50)->nullable();
+            $table->string('code2',50)->nullable();
+            $table->string('code3',50)->nullable();
+            $table->string('code4',50)->nullable();
+            $table->string('code5',50)->nullable();
+            $table->binary('attachment')->nullable();
+            $table->timestamps(); # Adds created_at and updated_at columns.
+            $table->softDeletes(); # Adds deleted_at column for soft deletes.
+
+            $table->index(['type','state','city']);
+            $table->index('number');
+            $table->index('date');
+        });
     }
 
     /**
@@ -51,6 +60,6 @@ class CreateTicketsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('tickets');
     }
 }
