@@ -37,12 +37,14 @@ class CreateBillingInfoTable extends Migration
             $table->string('estado',100);
             $table->string('cp',5);
             $table->enum('pais', ['Mexico'])->default('Mexico');
+            $table->integer('user_id')->unsigned();
             $table->timestamps(); # Adds created_at and updated_at columns.
             $table->softDeletes(); # Adds deleted_at column for soft deletes.
 
             $table->index('rfc');
             $table->unique('rfc');
             $table->index('razon_social');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
