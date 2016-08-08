@@ -50,7 +50,7 @@
               <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Inicio</a></li>
                 <li><a href="#about">Acerca</a></li>
-                <li><a href="#contact">Contacto</a></li>
+                <!-- li><a href="#contact">Contacto</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                   <ul class="dropdown-menu">
@@ -62,7 +62,27 @@
                     <li><a href="#">Separated link</a></li>
                     <li><a href="#">One more separated link</a></li>
                   </ul>
-                </li>
+                </li> -->
+              </ul>
+              <!-- Right Side Of Navbar -->
+              <ul class="nav navbar-nav navbar-right">
+                  <!-- Authentication Links -->
+                  @if (Auth::guest())
+                      <li><a href="{{ url('/register') }}">Registrate ahora</a></li>
+                      <li><a href="{{ url('/login') }}">Entrar</a></li>
+                  @else
+                      <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                              {{ Auth::user()->name }} <span class="caret"></span>
+                          </a>
+
+                          <ul class="dropdown-menu" role="menu">
+                              <li><a href="{{ url('/home') }}"><i class="fa fa-btn "></i>Mi Cuenta</a></li>
+                              <li><a href="{{ url('/profile') }}"><i class="fa fa-btn "></i>Mi Perfil</a></li>
+                              <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Salir</a></li>
+                          </ul>
+                      </li>
+                  @endif
               </ul>
             </div>
           </div>
@@ -86,8 +106,8 @@
           <img class="first-slide" src="http://searchengineland.com/figz/wp-content/seloads/2014/04/hotel-bell-customer-service-ss-1920.jpg" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Te fuiste de viaje</h1>
-              <p>y ¿no utilizas tus tickets?</p>
+              <h1>¿Necesitas un ticket de hospedaje?</h1>
+              <!-- <p>y ¿no utilizas tus tickets?</p> -->
               <!-- <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p> -->
             </div>
           </div>
@@ -96,8 +116,8 @@
           <img class="second-slide" src="http://image.vanguardia.com.mx/sites/default/files/gasolina_15.jpg" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Tienes coche</h1>
-              <p>pero ¿no utilizas tus ticket?</p>
+              <h1>¿Necesitas un ticket de gasolina?</h1>
+              <!-- <p>pero ¿no utilizas tus ticket?</p> -->
               <!-- <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p> -->
             </div>
           </div>
@@ -106,8 +126,8 @@
           <img class="third-slide" src="http://www.laculturaenpuebla.org/wp-content/uploads/2013/04/arrachera.jpg" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Comiste en un restaurante</h1>
-              <p>y no requieres tu ticket</p>
+              <h1>¿Necesitas un ticket de alimentos?</h1>
+              <!-- <p>y no requieres tu ticket</p> -->
               <!-- <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p> -->
             </div>
           </div>
@@ -133,35 +153,41 @@
       <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class="col-lg-4">
-          <img class="img-circle" src="{{ URL::asset('/images/give-ticket.jpg') }}" alt="Generic placeholder image" width="140" height="140">
-          <h2>Tengo un ticket</h2>
-          <!-- <p>Sí te fuiste a comer, cargaste tu tanque de gasolina ó simplemente tienes con un ticket que aun puede ser facturado, y deseas probar suerte. Haz clic aquí.</p> -->
+          <a href="home">
+            <img class="img-circle" src="{{ URL::asset('/images/give-ticket.jpg') }}" alt="Generic placeholder image" width="140" height="140">
+          </a>
+          <h2>Depositar un ticket</h2>
+          <p>Tienes un ticket porque saliste de viaje, fuiste a comer ó cargaste tu tanque de gasolina y deseas probar suerte. </p>
           <p></p>
-          <p><a class="btn btn-default" href="#" role="button">Ver detalles &raquo;</a></p>
+          <!-- <p><a class="btn btn-default" href="#" role="button">Ver detalles &raquo;</a></p> -->
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" src="{{ URL::asset('/images/get-ticket.jpg') }}" alt="Generic placeholder image" width="140" height="140">
-          <h2>Quiero un ticket</h2>
-          <p>Sí te fuiste de comisión y olvidaste pedir tus tickets para comprobar tus gastos. Entonces necesitas un ticket que pueda ser facturado. Haz clic aquí.</p>
-          <p><a class="btn btn-default" href="#" role="button">Ver detalles &raquo;</a></p>
+          <a href="home">
+            <img class="img-circle" src="{{ URL::asset('/images/get-ticket.jpg') }}" alt="Generic placeholder image" width="140" height="140">
+          </a>
+          <h2>Reciclar un ticket</h2>
+          <p>¿Necesitas tickets para comprobar tus gastos? No pierdas más tiempo Registrate ya! y comienza a buscarlos ahora mismo.</p>
+          <!-- <p><a class="btn btn-default" href="#" role="button">Ver detalles &raquo;</a></p> -->
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" src="{{ URL::asset('/images/help.jpg') }}" alt="Generic placeholder image" width="140" height="140">
+          <a href="#help">
+            <img class="img-circle" src="{{ URL::asset('/images/help.jpg') }}" alt="Generic placeholder image" width="140" height="140">
+          </a>
           <h2>¿Necesitas Ayuda?</h2>
-          <p>¿Cómo funciona? Sí necesitas conocer más detalle del funcionamiento de nuestra App. Haz clic aquí.</p>
-          <p><a class="btn btn-default" href="#" role="button">Ver detalles &raquo;</a></p>
+          <p>¿Cómo funciona? Sí necesitas conocer más detalle del funcionamiento de nuestra App.</p>
+          <!-- <p><a class="btn btn-default" href="#" role="button">Ver detalles &raquo;</a></p> -->
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
 
 
       <!-- START THE FEATURETTES -->
 
-      <hr class="featurette-divider">
+      <hr class="featurette-divider" id="about">
 
       <div class="row featurette">
         <div class="col-md-7">
           <h2 class="featurette-heading">No los tires a la basura..  <span class="text-muted">mejor reciclalos!</span></h2>
-          <p class="lead">&copy;Ticket Recycler es un novedoso sistema en Internet que ayuda a las personas a conseguir tickets para realizar su comprobación de gastos</p>
+          <p class="lead">&copy;Ticket Recycler es un novedoso sistema que ayuda a las personas que buscan tickets para comprobar gastos y a los demas a convertir sus tickets en algo más que basura, creando un sistema de colaboración en Internet.</p>
         </div>
         <div class="col-md-5">
           <img class="featurette-image img-responsive center-block" src="{{ URL::asset('/images/ticket-recycler-slogan.png') }}" alt="Generic placeholder image">
@@ -172,8 +198,8 @@
 
       <div class="row featurette">
         <div class="col-md-7 col-md-push-5">
-          <h2 class="featurette-heading">Tienes coche y <span class="text-muted"> ¿no utilizas tus ticket?</span></h2>
-          <p class="lead">&copy;Ticket Recycler te invita a reciclar tus tickets de gasolina. Si eres uno más que compra gasolina para su coche y no utilizas los tickets depositalo en nuestro cesto, alguien más podria reutilizarlo.</p>
+          <h2 class="featurette-heading">Cargaste gas y <span class="text-muted"> ¿no utilizas tu ticket?</span></h2>
+          <p class="lead">&copy;Ticket Recycler te invita a probar suerte depositando tus tickets en nuestro cesto, alguien más podria necesitarlo.</p>
         </div>
         <div class="col-md-5 col-md-pull-7">
           <img class="featurette-image img-responsive center-block" src="{{ URL::asset('/images/fuel-ticket.png') }}" alt="Generic placeholder image">
@@ -185,10 +211,25 @@
       <div class="row featurette">
         <div class="col-md-7">
           <h2 class="featurette-heading">Comiste en un restaurante y <span class="text-muted"> no requieres tu ticket</span></h2>
-          <p class="lead">No los tires a la basura, depositalo en &copy;Ticket Recycler y obten la oportunidad de recuperar dinero en efectivo.</p>
+          <p class="lead">&copy;Ticket Recycler te invita a probar suerte depositando tus tickets en nuestro cesto, alguien más podria necesitarlo.</p>
         </div>
         <div class="col-md-5">
           <img class="featurette-image img-responsive center-block" src="{{ URL::asset('/images/food-ticket.png') }}" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider" id="help">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="marketing">¿Como funciona <span class="text-muted">Ticket Recycler?</span></h2>
+          <p class="lead">&copy;Ticket Recycler funciona en dos sentidos:</p>
+          <p class="lead">Depositar tickets: cargaste gasolina ó llevaste a tu novi@ a un restaurante, entonces tienes un ticket que pudria servirle a alguien mas para comprobar sus gastos.</p>
+          <p class="lead">Reciclar tickets: sí por alguna razón necesitas tickets comprobar gastos, &copy Ticket Recycler te ayudara a buscarlos de una forma rapida y optima.</p>
+          <p class="lead">Necesitas registrarte para poder utilizar cualquiera de estas opciones.</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block" src="{{ URL::asset('/images/how-is-it.jpg') }}" alt="Generic placeholder image">
         </div>
       </div>
 

@@ -43,3 +43,18 @@ Route::get('test/database', 'Test\TestController@testDatabase');
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+## Se requieren las siguientes rutas
+/**
+ * tickets/search
+ * tickets/deposit
+ * 
+ * tickets/deposited
+ * tickets/recycled
+ * tickets/searches
+ *
+ * list/rfc
+ *
+ * help
+ * about
+ */
