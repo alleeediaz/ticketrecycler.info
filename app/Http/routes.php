@@ -22,7 +22,7 @@ Route::get('', function () {
 });
 
 
-Route::get('holamundo', function () {
+Route::post('holamundo', function () {
     return 'hola wero';
 });
 
@@ -43,6 +43,7 @@ Route::get('test/database', 'Test\TestController@testDatabase');
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+Route::get('list/rfc', 'BillinginfoController@index');
 
 ## Se requieren las siguientes rutas
 /**
